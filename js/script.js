@@ -7,29 +7,29 @@ $(document).ready(function () {
     let header = $('.header');
     let body = $('body');
 
-    $(window).scroll(function(){
+    $(window).scroll(function () {
         scroll_y = $(window).scrollTop();
         // console.log(scroll_y);
-        if(scroll_y > 70) {
+        if (scroll_y > 70) {
             header.addClass('header-fix');
             body.addClass('body-fix');
-        }else {
+        } else {
             header.removeClass('header-fix');
             body.removeClass('body-fix');
         }
     });
-       
+
     // 위로가기 기능
-    $('.gotop').click(function(){
-       $('html, body').animate({
-          scrollTop: 0
-       });
+    $('.gotop').click(function () {
+        $('html, body').animate({
+            scrollTop: 0
+        });
     });
 
     // center-menu 기능
     let center_menu = $('.center-menu');
     let center_submenu = $('.center-submenu');
-    center_menu.click(function(event){
+    center_menu.click(function (event) {
         event.preventDefault();
         center_submenu.toggle();
         center_menu.toggleClass('center-menu-active');
@@ -41,8 +41,8 @@ $(document).ready(function () {
     // 2 .category-list-2를 저장한다.
     let category_list_2 = $('.category-list-2');
     // 3 .category-list-more 를 클릭한다.
-    category_list_more.click(function(event){
-    // event 로 href를 막아야 한다.
+    category_list_more.click(function (event) {
+        // event 로 href를 막아야 한다.
         event.preventDefault();
         // 4 .category-list-2 를 토글한다.
         category_list_2.toggle();
@@ -53,8 +53,8 @@ $(document).ready(function () {
         see_more_list.hide();
         see_more_bt_open.show();
         see_more_bt_close.hide();
-        
-    });  
+
+    });
 
 
     // 더보기 기능
@@ -71,7 +71,7 @@ $(document).ready(function () {
     see_more_list.hide();
 
     // .see-more-bt 클릭처리
-    see_more_bt.click(function(event){
+    see_more_bt.click(function (event) {
         // href를 막는다.
         event.preventDefault();
         // display: blokc, none 처리
@@ -82,7 +82,7 @@ $(document).ready(function () {
 
         category_list_2.hide();
         category_list_more.removeClass('category-list-more-active');
-        
+
     });
 
     // visual slide
@@ -168,8 +168,7 @@ $(document).ready(function () {
     $.each(famous_good_box, function () {
         // good-box-special 찾아본다.
         let temp = $(this).find('.good-box-special');
-        if (temp.length > 0) {
-        } else {
+        if (temp.length > 0) {} else {
             $(this).find('.good-box-price').css('bottom', '3rem');
             $(this).find('.good-box-cart').css('bottom', '3rem');
         }
@@ -181,15 +180,15 @@ $(document).ready(function () {
     let famous_good_list = $('.famous .good-list');
     famous_good_list.eq(0).show();
 
-    $.each(famous_icon, function(index, item){
-        $(this).click(function(event){
+    $.each(famous_icon, function (index, item) {
+        $(this).click(function (event) {
             // a 태그의 href 를 막는다.
             event.preventDefault();
             famous_good_list.hide();
             famous_good_list.eq(index).show();
         });
-    });  
-    
+    });
+
     // brand 슬라이드
     new Swiper('.sw-brand', {
         slidesPerView: 3,
@@ -204,7 +203,7 @@ $(document).ready(function () {
     // banner 슬라이드
     new Swiper('.sw-banner', {
         slidesPerView: 2,
-        slidesPerGroup:1,
+        slidesPerGroup: 1,
         loop: true,
         navigation: {
             nextEl: ".sw-banner-next",
@@ -213,6 +212,11 @@ $(document).ready(function () {
         autoplay: {
             delay: 1500,
             disableOnInteraction: false,
+        },
+
+        pagination: {
+            el: ".sw-brand-pg",
+            type: "fraction",
         },
     });
 
@@ -225,7 +229,7 @@ $(document).ready(function () {
     // 리뷰 슬라이드
     new Swiper('.sw-review', {
         slidesPerView: 3,
-        slidesPerGroup:3,
+        slidesPerGroup: 3,
         spaceBetween: 15,
         navigation: {
             nextEl: ".sw-review-next",
@@ -246,14 +250,14 @@ $(document).ready(function () {
     // 3  .recipe-con-buy b 를 저장한다.
     let recipe_con_buy_b = $('.recipe-con-buy b');
 
-    $.each(recipe_con_item_bt, function(index, item){        
-        $(this).click(function(){
+    $.each(recipe_con_item_bt, function (index, item) {
+        $(this).click(function () {
             $(this).toggleClass('recipe-con-item-bt-active');
             카운트();
         });
     });
 
-    function 카운트(){
+    function 카운트() {
         // hasClass('recipe-con-item-bt-active');
         // 1  총 몇개를 가지고 있는가?
         let total = 5;
@@ -262,11 +266,11 @@ $(document).ready(function () {
         // 전체 금액을 계산한다.
         let 전체금액 = 0;
 
-        $.each(recipe_con_item_bt, function(index, item){
+        $.each(recipe_con_item_bt, function (index, item) {
             let 체크안되었어요 = $(this).hasClass('recipe-con-item-bt-active');
-            if(체크안되었어요 == true) {
+            if (체크안되었어요 == true) {
                 minus = minus + 1;
-            }            
+            }
             // 전체 금액을 계산한다. 
             // 속성(attribute) : class, href, src, alt=
             // 우리가 만든 속성 : data-money
@@ -274,22 +278,22 @@ $(document).ready(function () {
             // 글자를 숫자로 바꾸어야 한다.
             제품가격 = parseInt(제품가격);
 
-            if(체크안되었어요 == false) {
+            if (체크안되었어요 == false) {
                 전체금액 = 전체금액 + 제품가격;
             }
         });
 
-       // 가격을 표시한다.
-       전체금액 = 전체금액.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-       recipe_con_buy_b.text(전체금액);
+        // 가격을 표시한다.
+        전체금액 = 전체금액.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        recipe_con_buy_b.text(전체금액);
 
         total = total - minus;
         recipe_con_count.text('전체 선택 ' + total + '개');
         // recipe_con_count.text(`전체 선택 ${total}개`);
-        
-        if(total != 5) {
+
+        if (total != 5) {
             recipe_con_count_bt.addClass('recipe-con-count-bt-active');
-        }else{
+        } else {
             recipe_con_count_bt.removeClass('recipe-con-count-bt-active');
         }
     }
@@ -297,28 +301,55 @@ $(document).ready(function () {
     // 그래서 선택을 하든 아니든 함수를 실행
     카운트();
 
-    recipe_con_count_bt.click(function(){
+    recipe_con_count_bt.click(function () {
         $(this).toggleClass('recipe-con-count-bt-active');
-        let temp = $(this).hasClass('recipe-con-count-bt-active'); 
-        if(temp == true) {
+        let temp = $(this).hasClass('recipe-con-count-bt-active');
+        if (temp == true) {
             해제();
-        }else{
+        } else {
             모두();
         }
+        // 금액을 다시 계산
+        카운트();
     });
 
     function 해제() {
-        $.each(recipe_con_item_bt, function(index, item){        
+        $.each(recipe_con_item_bt, function (index, item) {
             $(this).addClass('recipe-con-item-bt-active');
         });
         recipe_con_count.text('전체 선택 0개');
     }
 
-    function 모두(){
-        $.each(recipe_con_item_bt, function(index, item){        
+    function 모두() {
+        $.each(recipe_con_item_bt, function (index, item) {
             $(this).removeClass('recipe-con-item-bt-active');
         });
         recipe_con_count.text('전체 선택 5개');
     }
+
+    // allmap 기능 관련
+    // .sitemap
+    let sitemap = $('.sitemap');
+    // .sitemap > a 
+    let sitemap_a = $('.sitemap > a');
+    // .allmap
+    let allmap = $('.allmap');
+    // .allmap-close
+    let allmap_close = $('.allmap-close');
+    // .sitemap > a 를 클릭하면 
+    sitemap_a.click(function (event) {
+        // href 막기
+        event.preventDefault();
+        allmap.stop().slideToggle();
+        // 색상넣기
+        sitemap.toggleClass('sitemap-active');
+    });
+
+    // .allmap_close 클릭하면
+    allmap_close.click(function () {
+        allmap.stop().slideUp();
+        // 색상빼기
+        sitemap.removeClass('sitemap-active');
+    });
 
 });
