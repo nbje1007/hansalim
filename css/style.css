@@ -38,6 +38,49 @@ body {
     word-break: break-all;
 }
 
+/* 모달창 */
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+}
+
+.modal-cont {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 14px;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    width: 400px;
+    height: 250px;
+    background-color: #fff;
+}
+
+.modal-cont p {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: 0;
+    background-color: #fff;
+    color: #999;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: #333;
+}
+
 /* 공통 클래스 */
 .container {
     position: relative;
@@ -1087,10 +1130,10 @@ body {
 }
 
 .sw-sales-next {
-    position: absolute;
-    left: 11.5rem;
-    top: 0;
     display: block;
+    position: absolute;
+    top: 0;
+    left: 11.5rem;
     width: 2.6rem;
     height: 2rem;
     background: url('../images/swiperArrN.png')no-repeat;
@@ -1108,8 +1151,9 @@ body {
     width: 9rem;
     font-size: 1.6rem;
     font-weight: 400;
-    letter-spacing: -0.04rem;
     color: #bbb;
+    line-height: 1.5;
+    letter-spacing: -0.04rem;
 }
 
 .sw-sales-pg .swiper-pagination-current {
@@ -1801,8 +1845,9 @@ body {
     width: 9rem;
     font-size: 1.6rem;
     font-weight: 400;
-    letter-spacing: -0.04rem;
     color: #bbb;
+    line-height: 1.5;
+    letter-spacing: -0.04rem;
 }
 
 .sw-brand-pg .swiper-pagination-current {
@@ -2615,28 +2660,23 @@ body {
 .footer-top {
     position: relative;
     display: block;
-    border-top: 0.1rem solid #f1f1f1;
-    border-bottom: 0.1rem solid #f1f1f1;
+    border-top: 1px solid #f1f1f1;
+    border-bottom: 1px solid #f1f1f1;
 }
 
 .footer-menu {
     position: relative;
     display: block;
+    float: left;
+
+    overflow: hidden;
 }
 
 .footer-menu>li {
     position: relative;
     display: block;
     float: left;
-    padding: 2rem 0.8rem;
-}
-
-.footer-menu>li:first-child {
-    padding-left: 0
-}
-
-.footer-menu>li:last-child {
-    padding-right: 0
+    padding: 2rem 1rem;
 }
 
 .footer-menu>li::after {
@@ -2647,7 +2687,15 @@ body {
     transform: translateY(-50%);
     width: 0.2rem;
     height: 0.2rem;
-    background-color: #a9b0b8;
+    background-color: #a8afb7;
+}
+
+.footer-menu>li:first-child {
+    padding-left: 0;
+}
+
+.footer-menu>li:last-child {
+    padding-right: 0;
 }
 
 .footer-menu>li:last-child::after {
@@ -2658,25 +2706,30 @@ body {
     display: block;
     font-size: 1.3rem;
     font-weight: 400;
-    letter-spacing: -.0.325rem;
     color: #000;
+    letter-spacing: -0.0325rem;
     line-height: 1.4615;
-
 }
 
 .sitemap {
     position: relative;
     display: block;
+    float: right;
+    padding: 2rem 1.5rem;
 }
 
-.sitemap>a {
+.sitemap a {
     display: block;
     font-size: 1.3rem;
     font-weight: 400;
     color: #666;
     letter-spacing: -0.0325rem;
     line-height: 1.4615;
-    padding: 2rem 1.5rem;
+}
+
+.sitemap a span {
+    display: inline-block;
+    width: 3rem;
 }
 
 .sitemap a::after {
@@ -2685,26 +2738,22 @@ body {
     display: inline-block;
     width: 1.2rem;
     height: 1.2rem;
-    background: url('../images/btnMore.png')no-repeat center;
+    background: url('../images/btnMore.png') no-repeat center;
     vertical-align: 0rem;
     margin-left: 0.5rem;
-}
-
-.sitemap>a>span {
-    display: inline-block;
-    margin-left: 3rem;
 }
 
 .footer-main {
     position: relative;
     display: block;
-    padding: 2rem;
+    padding-top: 2rem;
     padding-bottom: 6rem;
 }
 
 .copy {
     position: relative;
     display: block;
+    float: left;
 }
 
 .copy-list {
@@ -2716,19 +2765,35 @@ body {
     line-height: 1.69;
 }
 
+.copy-list span,
+.copy-list address {
+    font-size: 1.3rem;
+}
+
+.copy-list a {
+    color: #000;
+    font-weight: 500;
+}
+
+.copy-list .f-email {
+    font-weight: 400;
+}
+
+.copy-list address {
+    font-style: normal;
+}
+
 .copy-list span {
     position: relative;
     display: inline-block;
     padding: 0 1rem;
-    font-size: 1.3rem;
 }
 
 .copy-list span::after {
     content: '';
     position: absolute;
     right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0.5rem;
     display: block;
     width: 0.1rem;
     height: 1rem;
@@ -2747,22 +2812,7 @@ body {
     content: none;
 }
 
-.copy address {
-    font-style: normal;
-    font-size: 1.3rem;
-}
-
-.copy-list .f-email {
-    font-weight: 400;
-}
-
-.copy-list a {
-    color: #000;
-    font-weight: 500;
-}
-
 .copy p {
-    display: block;
     font-size: 1.1rem;
     font-weight: 400;
     color: #999;
@@ -2774,9 +2824,9 @@ body {
 .sns {
     position: relative;
     display: block;
+    float: right;
     overflow: hidden;
     padding-top: 1rem;
-    margin-right: 1rem;
 }
 
 .sns a {
@@ -2784,7 +2834,8 @@ body {
     float: left;
     width: 2.6rem;
     height: 2.6rem;
-    background: url('../images/ftSns.png');
+    background: url('../images/ftSns.png') no-repeat;
+
     margin-left: 1rem;
 }
 
@@ -2806,4 +2857,68 @@ body {
 
 .sns .i-kk {
     background-position: 0 -10.4rem;
+}
+
+
+.sitemap-active {
+    background-color: #f4f4f4 !important;
+}
+
+.allmap {
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    display: block;
+    width: 100%;
+    background-color: #f4f4f4;
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+
+    display: none;
+}
+
+.allmap .container {}
+
+.allmap-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2.4rem;
+    height: 2.4rem;
+    background: url('../images/btnFamilyClose.png') no-repeat center;
+    cursor: pointer;
+    border: 0;
+    font-size: 0;
+}
+
+.allmap-list {
+    overflow: hidden;
+}
+
+.allmap-list>li {
+    float: left;
+    width: 20%;
+}
+
+.allmap-list p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 2.2rem;
+    color: #76bd42;
+    letter-spacing: -0.0375rem;
+    margin-bottom: 1.4rem;
+}
+
+.allmap-list>li>ul {}
+
+.allmap-list>li>ul>li {}
+
+.allmap-list>li>ul>li>a {
+    display: inline-block;
+    line-height: 2.2rem;
+    color: #000;
+    font-size: 1.3rem;
+    letter-spacing: -0.0325rem;
+    font-weight: 400;
+
 }
